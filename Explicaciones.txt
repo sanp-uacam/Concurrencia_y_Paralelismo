@@ -1,0 +1,9 @@
+Condición de carrera:
+Es cuando dos o más hilos acceden y modifican una misma variable al mismo tiempo, y ele resultado depende del orden en que se ejecutan
+
+Sección Crítica:
+Es una parte del programa donde se accede o modifica un recurso compartido y que no debería ser ejecutada simultáneamente por varios hilos
+
+movl= Mueve o copia un valor entre registros o memoria
+addl= Realiza una suma
+subl= Realiza una resta
