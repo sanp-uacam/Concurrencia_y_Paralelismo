@@ -83,7 +83,7 @@ int main(void){
 //| ----: | ----------: | ----------: |   -----:   |
 //|     4 | 100,000,000 |  2.099968   | 0.06800 s  |
 //|     8 | 100,000,000 |  4.199936   | 0.171000 s |
-//|    16 | 100,000,000 |  8.399872   | 0.376000 s |
+//|    16 | 100,000,000 |  3.399872   | 0.376000 s |
 
 // COMO FUNCIONA MUTEX
 //Es un candado que administra el sistema operativo. Cuando un hilo lo pide y está libre, lo toma y sigue; 
