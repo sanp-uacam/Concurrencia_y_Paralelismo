@@ -1,0 +1,17 @@
+Conclusión:
+El mejor tiempo de ejecución se obtuvo con 8 hilos (1.706834 segundos), superando por una diferencia insignificante a 16 hilos (1.710821 s) y 2 hilos (1.721248 s). Sin embargo, en la práctica, los tres tiempos son prácticamente idénticos (alrededor de 1.71 segundos).
+
+Esto ocurre porque el semáforo ubicado dentro del ciclo principal actúa como un cuello de botella. Dado que los hilos deben detenerse a esperar su turno (sem_wait) para actualizar la variable global puntosDentro en casi el 78.5% de las iteraciones, el código se ejecuta de forma secuencial (uno a la vez) en lugar de paralela. Por ello, la mínima diferencia de tiempo entre 2, 8 y 16 hilos se debe solo a variaciones normales en la carga del sistema operativo y no a una ganancia de rendimiento real.
+
+Pregunta de Análisis
+¿Aumentar la cantidad de hilos siempre mejora el rendimiento? Explique sus resultados.
+
+No, aumentar la cantidad de hilos no siempre mejora el rendimiento. Sus resultados demuestran claramente que pasar de 2 a 8 y luego a 16 hilos no redujo el tiempo de ejecución, manteniéndose estancado en la barrera de los 1.7 segundos.
+
+Esto se explica mediante los siguientes factores:
+
+Serialización del código: De acuerdo con la Ley de Amdahl, el aceleramiento de un programa está limitado por su parte secuencial. Al colocar la protección del semáforo dentro del ciclo de 1,000,000 de puntos, se forzó a que los hilos procesen la suma de manera estrictamente secuencial. No importa cuántos hilos añadas; todos se amontonan a esperar la misma puerta de acceso.
+
+Sobrecarga de Sincronización y Cambios de Contexto: Cada vez que aumentas el número de hilos compitiendo por un mismo semáforo, el sistema operativo gasta más recursos cambiando de un hilo a otro (context switching) y gestionando la cola de espera. Agregar más hilos en presencia de alta contención solo genera más "tráfico" de gestión sin aportar cómputo útil.
+
+Diseño del Paralelismo: El paralelismo solo es efectivo cuando los hilos pueden trabajar de manera independiente la mayor parte del tiempo (por ejemplo, si cada hilo contara sus propios puntos en una variable local y solo usara el semáforo una sola vez al final para sumar su total).

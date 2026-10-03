@@ -1,0 +1,18 @@
+Explicación del Algoritmo ImplementadoEl programa implementa una simulación probabilística basada en el método de Monte Carlo para estimar el valor de pi repartiendo el trabajo entre múltiples hilos de ejecución:División de Trabajo: Se define un total de 100,000,000 de puntos. La carga de trabajo se distribuye equitativamente entre la cantidad de hilos solicitados, de modo que cada hilo procesa exactamente TOTAL_PUNTOS/num_hilos.
+Generación y Evaluación: Cada hilo ejecuta una función aleatoria local (thread-safe) para generar coordenadas (x, y) dentro de un cuadrado de [-1, 1] \times [-1, 1]. Posteriormente, comprueba si el punto recae dentro del círculo unitario mediante la condición x^2 + y^2 menor o igual a 1.
+Exclusión Mutua con Test-and-Set (Spinlock): Para evitar condiciones de carrera sobre la variable compartida puntosDentro, se emplea la instrucción atómica __atomic_test_and_set. Si el punto ingresa al círculo, el hilo intenta adquirir el cerrojo en un bucle de espera activa (spin); una vez obtenido, incrementa el contador global y libera la bandera atómica.
+Cálculo Final: Tras esperar la finalización de todos los hilos (pthread_join), se calcula el valor aproximado con la fórmula:pi approx = 4.0 X puntosDentro/TOTAL_PUNTOS
+
+
+Conclusión sobre su Rendimiento
+A partir de los datos recolectados (4 hilos en 9.91 s, 8 hilos en 16.90 s y 16 hilos en 28.87 s), se observa que el rendimiento empeora drásticamente a medida que aumenta la cantidad de hilos. El tiempo de ejecución no disminuyó, sino que casi se triplicó al pasar de 4 a 16 hilos.
+
+Análisis de causas:
+
+Espera Activa Ineficiente (Spinning): A diferencia de los semáforos del sistema operativo que ponen a dormir los hilos en espera, la implementación Test-and-Set ejecuta un ciclo while continuo. Esto satura el uso de la CPU al 100% en tareas de espera infructuosas.
+
+Contención Extrema en la Sección Crítica: Puesto que el área del círculo abarca cerca del 78.5% del área total, se realizan aproximadamente 78.5 millones de intentos de bloqueo sobre una misma variable global. Al haber más hilos compitiendo (8 o 16), la probabilidad de colisión se dispara exponencialmente.
+
+Tráfico en el Bus de Memoria (Cache Bouncing): La instrucción atómica exige que los núcleos del procesador coordinen el estado de la línea de caché constantemente. Al modificar lock_flag millones de veces por segundo desde múltiples núcleos, la memoria se satura invalidando cachés localmente, lo cual ralentiza la ejecución general.
+
+Solución técnica adecuada: Para conseguir una aceleración real (escalabilidad lineal), cada hilo debe contabilizar sus aciertos en una variable local privada dentro de su bucle y solicitar el cerrojo Test-and-Set una sola vez al final para sumar su resultado al total global.
