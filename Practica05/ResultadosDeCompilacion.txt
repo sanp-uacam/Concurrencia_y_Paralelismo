@@ -1,0 +1,60 @@
+Resultados de compilación
+
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 1
+Numero de hilos: 1
+Total de puntos: 100000000
+Puntos dentro del circulo: 78536796
+Valor aproximado de Pi: 3.141472
+Tiempo de ejecucion: 2.229376 segundos
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 1
+Numero de hilos: 1
+Total de puntos: 100000000
+Puntos dentro del circulo: 78542998
+Valor aproximado de Pi: 3.141720
+Tiempo de ejecucion: 2.207208 segundos
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 1
+Numero de hilos: 1
+Total de puntos: 100000000
+Puntos dentro del circulo: 78537768
+Valor aproximado de Pi: 3.141511
+Tiempo de ejecucion: 2.199356 segundos
+
+
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 4
+Numero de hilos: 4
+Total de puntos: 100000000
+Puntos dentro del circulo: 78537938
+Valor aproximado de Pi: 3.141518
+Tiempo de ejecucion: 38.901230 segundos
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 4
+Numero de hilos: 4
+Total de puntos: 100000000
+Puntos dentro del circulo: 78536520
+Valor aproximado de Pi: 3.141461
+Tiempo de ejecucion: 54.568014 segundos
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 4
+Numero de hilos: 4
+Total de puntos: 100000000
+Puntos dentro del circulo: 78547773
+Valor aproximado de Pi: 3.141911
+Tiempo de ejecucion: 60.986773 segundos
+
+
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 8
+Numero de hilos: 8
+Total de puntos: 100000000
+Puntos dentro del circulo: 78539537
+Valor aproximado de Pi: 3.141581
+Tiempo de ejecucion: 64.222103 segundos
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 8
+Numero de hilos: 8
+Total de puntos: 100000000
+Puntos dentro del circulo: 78539728
+Valor aproximado de Pi: 3.141589
+Tiempo de ejecucion: 96.970708 segundos
+lucyjy@DESKTOP-TDQ5Q7L:~/practica 5 cyp$ ./practica5-montecarlo 8
+Numero de hilos: 8
+Total de puntos: 100000000
+Puntos dentro del circulo: 78538246
+Valor aproximado de Pi: 3.141530
+Tiempo de ejecucion: 82.893735 segundos
