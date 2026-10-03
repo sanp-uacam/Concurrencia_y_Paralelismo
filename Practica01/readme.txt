@@ -1,0 +1,10 @@
+Thread_One: Global counter = 21
+Thread_One: Global counter = 22
+Thread_One: Global counter = 23
+Thread_One: Global counter = 24
+Thread_One: Global counter = 25
+Thread_Two: Global counter = 24
+Thread_Two: Global counter = 23
+Thread_Two: Global counter = 22
+Thread_Two: Global counter = 21
+Thread_Two: Global counter = 20
