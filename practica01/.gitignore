@@ -1,0 +1,5 @@
+*.o
+*.out
+race_test
+race_test_mutex
+*.exex
