@@ -4,53 +4,97 @@
 #include <time.h>
 #include <unistd.h>
 
-#define NR_LOOP 10
+#define TOTAL_PLATOS 40
+#define PLATOS_POR_MESERO 10
+
+// Cesar Raul Ramirez Cab - 69967
 static void * cocinar(void* arg);
-static void * servir(void* arg);
+static void * mesero1(void* arg);
+static void * mesero2(void* arg);
+static void * mesero3(void* arg);
+static void * mesero4(void* arg);
 
-static int counter = 0;
+static int platos_preparados = 0;
 
-sem_t sem1;
+sem_t semaforo_cocina;
 
 int main(void)
 {
-  pthread_t cocinero, mesero_1, mesero_2;
+  pthread_t hilo_cocinero;
+  pthread_t hilo_mesero1, hilo_mesero2, hilo_mesero3, hilo_mesero4;
 
-  sem_init(&sem1, 0, 0);
+  sem_init(&semaforo_cocina, 0, 0);
 
-  pthread_create (&cocinero, NULL, *cocinar, NULL);
-  pthread_create (&mesero_1, NULL, *servir, NULL);
-  pthread_create (&mesero_2, NULL, *servir, NULL);
+  pthread_create(&hilo_cocinero, NULL, cocinar, NULL);
+  pthread_create(&hilo_mesero1, NULL, mesero1, NULL);
+  pthread_create(&hilo_mesero2, NULL, mesero2, NULL);
+  pthread_create(&hilo_mesero3, NULL, mesero3, NULL);
+  pthread_create(&hilo_mesero4, NULL, mesero4, NULL);
 
-  pthread_join(cocinero, NULL);
-  pthread_join(mesero_1, NULL);
-  pthread_join(mesero_2, NULL);
+  pthread_join(hilo_cocinero, NULL);
+  pthread_join(hilo_mesero1, NULL);
+  pthread_join(hilo_mesero2, NULL);
+  pthread_join(hilo_mesero3, NULL);
+  pthread_join(hilo_mesero4, NULL);
 
-  // printf("Contador %d \n", counter);
+  printf("\nTotal de platos preparados: %d\n", platos_preparados);
+
+  sem_destroy(&semaforo_cocina);
 
   return 0;
 }
 
 static void * cocinar(void* arg) {
-  for (int i = 0; i < NR_LOOP; i++)
+  for (int i = 1; i <= TOTAL_PLATOS; i++)
   {
-    // sem_wait(&sem1);
-    // sem_post(&sem1);
-    counter++;
-    printf("COCINERO: Comida preparada.Platillos en espera: %d \n", counter);
-    sem_post(&sem1);
-    usleep(500000);
+    platos_preparados++;
+    printf("[Cocina] Plato %d listo\n", platos_preparados);
+    fflush(stdout);
+    sem_post(&semaforo_cocina); 
   }
-  
+  return NULL;
 }
 
-static void * servir(void* arg) {
-  for (int i = 0; i < NR_LOOP/2; i++)
+static void * mesero1(void* arg) {
+  for (int i = 1; i <= PLATOS_POR_MESERO; i++)
   {
-    sem_wait(&sem1);
-    counter--;
-    printf("MESERO: Comida servida. Platillos en espera: %d \n", counter);
-    sleep(2);
+    sem_wait(&semaforo_cocina); 
+    printf("   Mesero 1 entrego el plato numero %d de su turno\n", i);
+    fflush(stdout);
+    sleep(1); 
   }
-  
+  return NULL;
+}
+
+static void * mesero2(void* arg) {
+  for (int i = 1; i <= PLATOS_POR_MESERO; i++)
+  {
+    sem_wait(&semaforo_cocina);
+    printf("   Mesero 2 entrego el plato numero %d de su turno\n", i);
+    fflush(stdout);
+    sleep(1);
+  }
+  return NULL;
+}
+
+static void * mesero3(void* arg) {
+  for (int i = 1; i <= PLATOS_POR_MESERO; i++)
+  {
+    sem_wait(&semaforo_cocina);
+    printf("   Mesero 3 entrego el plato numero %d de su turno\n", i);
+    fflush(stdout);
+    sleep(1);
+  }
+  return NULL;
+}
+
+static void * mesero4(void* arg) {
+  for (int i = 1; i <= PLATOS_POR_MESERO; i++)
+  {
+    sem_wait(&semaforo_cocina);
+    printf("   Mesero 4 entrego el plato numero %d de su turno\n", i);
+    fflush(stdout);
+    sleep(1);
+  }
+  return NULL;
 }
