@@ -1,0 +1,145 @@
+//proueba 1 con 1_000_000
+-> Escribir FileWriter: 725 ms
+
+-> Escribir BufferedWriter: 597 ms
+
+-> Leer FileReader (Caracter por caracter): 3012 ms [24888890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 98 ms [1000000 líneas]
+
+-> Escribir FileOutputStream: 11347 ms
+
+-> Escribir BufferedOutputStream: 600 ms
+
+-> Leer BufferedInputStream (Byte por byte): 485 ms [24888890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 31554 ms [24888890 bytes]
+//proueba 2 con 1_000_000
+-> Escribir FileWriter: 578 ms
+
+-> Escribir BufferedWriter: 501 ms
+
+-> Leer FileReader (Caracter por caracter): 2364 ms [24888890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 101 ms [1000000 líneas]
+
+-> Escribir FileOutputStream: 8428 ms
+
+-> Escribir BufferedOutputStream: 583 ms
+
+-> Leer BufferedInputStream (Byte por byte): 130 ms [24888890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 31742 ms [24888890 bytes]
+//proueba 3 con 1_000_000
+-> Escribir FileWriter: 553 ms
+
+-> Escribir BufferedWriter: 426 ms
+
+-> Leer FileReader (Caracter por caracter): 2284 ms [24888890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 336 ms [1000000 líneas]
+
+-> Escribir FileOutputStream: 7947 ms
+
+-> Escribir BufferedOutputStream: 643 ms
+
+-> Leer BufferedInputStream (Byte por byte): 650 ms [24888890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 27595 ms [24888890 bytes]
+//proueba 1 con 100_000
+-> Escribir FileWriter: 134 ms
+
+-> Escribir BufferedWriter: 64 ms
+
+-> Leer FileReader (Caracter por caracter): 202 ms [2388890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 31 ms [100000 líneas]
+
+-> Escribir FileOutputStream: 1422 ms
+
+-> Escribir BufferedOutputStream: 90 ms
+
+-> Leer BufferedInputStream (Byte por byte): 65 ms [2388890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 2967 ms [2388890 bytes]
+//proueba 2 con 100_000
+-> Escribir FileWriter: 124 ms
+
+-> Escribir BufferedWriter: 42 ms
+
+-> Leer FileReader (Caracter por caracter): 250 ms [2388890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 35 ms [100000 líneas]
+
+-> Escribir FileOutputStream: 1796 ms
+
+-> Escribir BufferedOutputStream: 107 ms
+
+-> Leer BufferedInputStream (Byte por byte): 74 ms [2388890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 3876 ms [2388890 bytes]
+//proueba 3 con 100_000
+-> Escribir FileWriter: 103 ms
+
+-> Escribir BufferedWriter: 40 ms
+
+-> Leer FileReader (Caracter por caracter): 231 ms [2388890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 25 ms [100000 líneas]
+
+-> Escribir FileOutputStream: 809 ms
+
+-> Escribir BufferedOutputStream: 77 ms
+
+-> Leer BufferedInputStream (Byte por byte): 54 ms [2388890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 2661 ms [2388890 bytes]
+//proueba 1 con 10_000_000
+-> Escribir FileWriter: 5261 ms
+
+-> Escribir BufferedWriter: 7323 ms
+
+-> Leer FileReader (Caracter por caracter): 20672 ms [258888890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 724 ms [10000000 líneas]
+
+-> Escribir FileOutputStream: 75464 ms
+
+-> Escribir BufferedOutputStream: 6438 ms
+
+-> Leer BufferedInputStream (Byte por byte): 7704 ms [258888890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 276762 ms [258888890 bytes]
+//proueba 2 con 10_000_000
+-> Escribir FileWriter: 5086 ms
+
+-> Escribir BufferedWriter: 5387 ms
+
+-> Leer FileReader (Caracter por caracter): 20047 ms [258888890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 697 ms [10000000 líneas]
+
+-> Escribir FileOutputStream: 77840 ms
+
+-> Escribir BufferedOutputStream: 4709 ms
+
+-> Leer BufferedInputStream (Byte por byte): 5319 ms [258888890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 285514 ms [258888890 bytes]
+//proueba 3 con 10_000_000
+-> Escribir FileWriter: 5511 ms
+
+-> Escribir BufferedWriter: 4434 ms
+
+-> Leer FileReader (Caracter por caracter): 20780 ms [258888890 caracteres]
+
+-> Leer BufferedReader (Por líneas): 731 ms [10000000 líneas]
+
+-> Escribir FileOutputStream: 75031 ms
+
+-> Escribir BufferedOutputStream: 4961 ms
+
+-> Leer BufferedInputStream (Byte por byte): 7413 ms [258888890 bytes]
+
+-> Leer FileInputStream (Byte por byte): 278520 ms [258888890 bytes]
+
