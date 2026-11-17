@@ -1,0 +1,28 @@
+Practica 4 - Concurrencia y paralelismo
+Alumna: Laura Lucia Jaramillo Yah
+Matrícula: 68636
+
+
+Explicación del funcionamiento:
+
+El programa es un chat cliente-servidor que permite que varios usuarios se conecten al mismo servidor y puedan intercambiar mensajes. Se utilizan sockets para establecer la comunicación y diferentes hilos para atender a los clientes al mismo tiempo.
+
+
+
+Funcionamiento del servidor (ParallelServer)
+
+El servidor comienza escuchando en el puerto 8080 y espera las conexiones de los clientes. Cuando alguien se conecta, se le asigna un hilo mediante ExecutorService para poder atenderlo sin bloquear las demás conexiones.
+
+Una de las principales modificaciones de esta práctica fue agregar un inicio de sesión donde cada cliente debe ingresar un nombre de usuario. El servidor verifica que el nombre tenga entre 1 y 20 caracteres y que solo contenga letras, números, guiones o guiones bajos. También comprueba que no esté siendo utilizado por otra persona.
+
+Para llevar el registro de los usuarios conectados se utiliza ConcurrentHashMap. Esto permite almacenar sus nombres y sus respectivos canales de comunicación.
+
+Cuando un usuario envía un mensaje, el servidor lo recibe y utiliza el método broadcast() para compartirlo con los demás usuarios conectados. También informa cuando alguien entra o sale del chat.
+
+
+
+Funcionamiento del cliente (ConcurrentClient)
+
+El cliente se conecta al servidor y solicita un nombre de usuario. Este se envía para que el servidor compruebe si es válido y si está disponible. Si el nombre ya está ocupado o no cumple con los requisitos, el usuario puede intentar nuevamente.
+
+Una vez aceptado el nombre, puede comenzar a enviar mensajes. El cliente utiliza un hilo receptor para escuchar los mensajes que llegan del servidor mientras el usuario continúa escribiendo.
