@@ -1,0 +1,17 @@
+Practica 3 - Concurrencia y paralelismo
+Alumna: Laura Lucia Jaramillo Yah
+Matrícula: 68636
+
+
+3. Mecanismo de salida limpia
+
+Para cerrar la conexión se utiliza la palabra "salir". Cuando el cliente escribe esta palabra, el servidor la recibe y envía un mensaje de despedida, después de eso, ambos programas terminan la comunicación  y cierran los sockets y los flujos que estaban utilizando. Esto se hace mediante try-with-resources, que permite cerrar los recursos automáticamente al terminar.
+
+
+5. Breve explicación
+
+En esta práctica se modificaron los códigos del cliente y del servidor para que la conexión no se cerrara después de enviar el primer mensaje, sino que se mantuviera activa durante toda la sesión.
+
+En el cliente se agregó un ciclo que permite enviar varios mensajes y un hilo encargado de recibir las respuestas del servidor al mismo tiempo. En el servidor también se agregó un ciclo para que pueda seguir recibiendo mensajes del cliente y responder a cada uno.
+
+Mientras el cliente no escriba "salir", la conexión permanece abierta. Si deja de enviar mensajes, el servidor simplemente se queda esperando a recibir otro, sin cerrar la conexión. Cuando se escribe la palabra de salida, se termina la comunicación y se cierran los recursos utilizados.
